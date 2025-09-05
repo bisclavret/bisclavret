@@ -1,0 +1,195 @@
+@use './variables.scss' as *;
+@use './mixins.scss' as *;
+
+/* Left panel */
+.left-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: $spacing-xl;
+  @include no-select;
+}
+
+.left-panel .subtitle {
+  font-size: 1rem;
+  color: $text-secondary;
+  margin: 0 0 $spacing-md 0;
+  @include hover-effect;
+}
+
+.left-panel .logo {
+  height: 15em;
+  margin-bottom: $spacing-md;
+  border-radius: $border-radius-xl;
+  transition: transform $transition-slower;
+  position: relative;
+  z-index: 2;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+}
+
+.left-panel h1 {
+  font-size: 3rem;
+  margin: 0.5rem 0;
+  letter-spacing: 1px;
+}
+
+.left-panel .info-text {
+  font-size: 1.2rem;
+  color: $text-muted;
+  max-width: 500px;
+  @include hover-effect;
+}
+
+/* Right panel */
+.right-panel {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: $background-panel;
+  padding: $spacing-md;
+  border-left: 1px solid $border-color;
+  box-sizing: border-box;
+  @include no-select;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Create story button */
+.right-panel .new-story {
+  position: relative;
+  @include button-base;
+  background-color: $background-card;
+  padding: $spacing-md $spacing-md $spacing-md 2.5rem;
+  font-size: 1rem;
+  font-weight: 300;
+  color: $text-light;
+  margin-bottom: $spacing-md;
+
+  &:hover {
+    background-color: $primary-color;
+    color: #fff;
+  }
+
+  &::before {
+    content: "+";
+    position: absolute;
+    left: $spacing-md;
+    font-size: 2em;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+/* Workspace header */
+.workspace-header h3 {
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.workspace-header hr {
+  border: none;
+  height: 1px;
+  background-color: $background-card;
+  margin: 0 0 $spacing-sm 0;
+}
+
+/* Story list scrollable */
+.story-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  flex-grow: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.story-item {
+  @include card-base;
+  padding: 0.7rem $spacing-md;
+  cursor: pointer;
+  color: $text-light;
+
+  &:hover {
+    background-color: $background-card-hover;
+    color: $primary-color;
+  }
+}
+
+/* Footer fixed at bottom */
+.footer-meta {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: #777;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $spacing-sm;
+}
+
+.footer-icon {
+  width: 24px;
+  height: 24px;
+  fill: white;
+  transition: fill $transition-normal, transform $transition-normal;
+
+  &:hover {
+    fill: $primary-color;
+    transform: scale(1.2);
+  }
+}
+
+/* Light mode panels */
+@media (prefers-color-scheme: light) {
+  .left-panel .info-text {
+    color: $text-secondary-light;
+  }
+
+  .left-panel .subtitle {
+    color: $text-muted-light;
+  }
+
+  .right-panel {
+    background-color: $background-panel-light;
+    border-left: 1px solid $border-color-light;
+  }
+
+  .right-panel .new-story {
+    background-color: $background-card-light;
+    color: #000;
+
+    &:hover {
+      background-color: $primary-color;
+      color: #fff;
+    }
+  }
+
+  .workspace-header hr {
+    background-color: $background-card-light;
+  }
+
+  .story-item {
+    background-color: $background-card-light;
+    color: $text-light-light;
+
+    &:hover {
+      background-color: $background-card-hover-light;
+      color: $primary-color;
+    }
+  }
+
+  .footer-meta {
+    color: $text-secondary-light;
+  }
+
+  .footer-icon {
+    fill: black;
+  }
+}

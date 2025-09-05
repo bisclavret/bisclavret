@@ -1,0 +1,187 @@
+@use './variables.scss' as *;
+@use './mixins.scss' as *;
+
+/* Titlebar */
+.titlebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 16px 0 8px;
+  @include no-select;
+  @include app-region-drag;
+  z-index: $z-titlebar;
+  font-size: 0.8rem;
+  color: #ddd;
+}
+
+/* Left side (logo + menus) */
+.titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.titlebar-left .logo {
+  height: 20px;
+  width: 20px;
+  border-radius: $border-radius-sm;
+}
+
+/* Menu bar */
+.menu-bar {
+  display: flex;
+  gap: 10px;
+}
+
+.menu {
+  position: relative;
+  cursor: default;
+}
+
+.menu span {
+  padding: 0 5px;
+  user-select: none;
+}
+
+.menu:hover .dropdown {
+  display: block;
+}
+
+/* Dropdown menu */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: $background-card;
+  border: 1px solid $background-card-hover;
+  border-radius: $border-radius-sm;
+  min-width: 120px;
+  z-index: $z-dropdown;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity $transition-fast, visibility $transition-fast;
+}
+
+.menu:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.dropdown-item {
+  padding: 6px 12px;
+  margin: 4px;
+  border-radius: $border-radius-sm;
+  white-space: nowrap;
+  color: $text-light;
+  cursor: pointer;
+  transition: background-color $transition-normal, color $transition-normal;
+
+  &:hover {
+    background-color: $primary-color;
+    color: #fff;
+  }
+}
+
+/* Center title */
+.titlebar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  font-size: 0.9rem;
+}
+
+/* Right side: window buttons */
+.titlebar-right {
+  display: flex;
+  gap: 8px;
+  @include app-region-no-drag;
+}
+
+.window-controls button {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  transition: filter $transition-normal;
+}
+
+#close {
+  background-color: #ff5f57;
+}
+
+#minimize {
+  background-color: #ffbd2e;
+}
+
+#maximize {
+  background-color: #28c840;
+}
+
+.window-controls button svg {
+  width: 8px;
+  height: 8px;
+  fill: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transition: opacity $transition-fast;
+  pointer-events: none;
+}
+
+.window-controls button:hover svg {
+  opacity: 1;
+}
+
+.window-controls button:hover {
+  filter: brightness(1.15);
+}
+
+/* Light mode titlebar */
+@media (prefers-color-scheme: light) {
+  .titlebar {
+    background: $background-panel-light;
+    color: $text-light-light;
+  }
+
+  .titlebar-center {
+    color: $text-light-light;
+  }
+
+  .menu span {
+    color: $text-light-light;
+    
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  .dropdown {
+    background: $background-panel-light;
+    border: 1px solid $border-color-light;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .dropdown-item {
+    color: $text-light-light;
+
+    &:hover {
+      background-color: $background-card-hover-light;
+      color: #000;
+    }
+  }
+}

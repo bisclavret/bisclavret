@@ -1,0 +1,47 @@
+// Color variables
+$primary-color: #646cff;
+$background-dark: #030405;
+$background-panel: #0f0f17;
+$background-card: #1c1c28;
+$background-card-hover: #2a2a3b;
+$text-primary: #e0e0e0;
+$text-secondary: #888;
+$text-muted: #aaa;
+$text-light: #ccc;
+$border-color: #1b1b26;
+
+// Light mode colors
+$background-light: #f0f0f0;
+$background-panel-light: #e0e0e0;
+$background-card-light: #ccc;
+$background-card-hover-light: #b5b5ff;
+$text-primary-light: #213547;
+$text-secondary-light: #555;
+$text-muted-light: #666;
+$text-light-light: #333;
+$border-color-light: #d1d1d1;
+
+// Spacing
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+// Border radius
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 10px;
+$border-radius-xl: 20px;
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-normal: 0.2s ease;
+$transition-slow: 0.25s ease;
+$transition-slower: 0.3s ease;
+
+// Z-index
+$z-titlebar: 1000;
+$z-titlebar-border: 1001;
+$z-dropdown: 1002;
+$z-sparkle: 1002;

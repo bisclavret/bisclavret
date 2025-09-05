@@ -1,0 +1,148 @@
+@use './variables.scss' as *;
+
+/* Magical sparkle container */
+.logo-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Magical sparkles */
+.sparkle-container {
+  z-index: $z-sparkle;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.25);
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, $primary-color 0%, $primary-color 30%, rgba(100, 108, 255, 0.4) 60%, transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: $z-sparkle;
+  box-shadow: 
+    0 0 10px $primary-color,
+    0 0 20px $primary-color,
+    0 0 30px rgba(100, 108, 255, 0.8);
+
+  /* Pulsing glow effect */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: radial-gradient(circle, rgba(100, 108, 255, 0.6) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite alternate;
+  }
+
+  /* Particle trail effect */
+  &::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(100, 108, 255, 0.3);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: trail 1s ease-out infinite;
+  }
+}
+
+/* Pulsing animation */
+@keyframes pulse {
+  0% { opacity: 0.6; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Trail animation */
+@keyframes trail {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(2); }
+}
+
+/* Individual sparkle animations */
+.sparkle:nth-of-type(1) { animation: float1 4s ease-in-out infinite; }
+.sparkle:nth-of-type(2) { animation: float2 3.5s ease-in-out infinite 0.5s; }
+.sparkle:nth-of-type(3) { animation: float3 4.5s ease-in-out infinite 1s; }
+.sparkle:nth-of-type(4) { animation: float4 3.8s ease-in-out infinite 1.5s; }
+.sparkle:nth-of-type(5) { animation: float5 4.2s ease-in-out infinite 2s; }
+.sparkle:nth-of-type(6) { animation: float6 3.9s ease-in-out infinite 2.5s; }
+.sparkle:nth-of-type(7) { animation: float7 4.1s ease-in-out infinite 3s; }
+.sparkle:nth-of-type(8) { animation: float8 3.6s ease-in-out infinite 3.5s; }
+
+/* Floating animations */
+@keyframes float1 {
+  0%   { transform: translate(-60px, 60px) scale(0.5); opacity: 0.3; }
+  25%  { transform: translate(-80px, -20px) scale(1); opacity: 1; }
+  50%  { transform: translate(-40px, -60px) scale(0.8); opacity: 0.8; }
+  75%  { transform: translate(-100px, -40px) scale(1.2); opacity: 1; }
+  100% { transform: translate(-60px, 60px) scale(0.5); opacity: 0.3; }
+}
+
+@keyframes float2 {
+  0%   { transform: translate(70px, -50px) scale(0.8); opacity: 0.4; }
+  25%  { transform: translate(90px, 20px) scale(1.1); opacity: 1; }
+  50%  { transform: translate(50px, 80px) scale(0.6); opacity: 0.7; }
+  75%  { transform: translate(110px, 40px) scale(1); opacity: 0.9; }
+  100% { transform: translate(70px, -50px) scale(0.8); opacity: 0.4; }
+}
+
+@keyframes float3 {
+  0%   { transform: translate(0px, -80px) scale(0.7); opacity: 0.5; }
+  25%  { transform: translate(30px, -100px) scale(1.2); opacity: 1; }
+  50%  { transform: translate(-20px, -60px) scale(0.9); opacity: 0.8; }
+  75%  { transform: translate(40px, -120px) scale(0.6); opacity: 0.6; }
+  100% { transform: translate(0px, -80px) scale(0.7); opacity: 0.5; }
+}
+
+@keyframes float4 {
+  0%   { transform: translate(-90px, 20px) scale(0.9); opacity: 0.6; }
+  25%  { transform: translate(-50px, -30px) scale(0.7); opacity: 0.8; }
+  50%  { transform: translate(-120px, -10px) scale(1.1); opacity: 1; }
+  75%  { transform: translate(-70px, 40px) scale(0.8); opacity: 0.7; }
+  100% { transform: translate(-90px, 20px) scale(0.9); opacity: 0.6; }
+}
+
+@keyframes float5 {
+  0%   { transform: translate(40px, 90px) scale(0.6); opacity: 0.4; }
+  25%  { transform: translate(80px, 60px) scale(1); opacity: 0.9; }
+  50%  { transform: translate(20px, 120px) scale(1.3); opacity: 1; }
+  75%  { transform: translate(100px, 80px) scale(0.8); opacity: 0.7; }
+  100% { transform: translate(40px, 90px) scale(0.6); opacity: 0.4; }
+}
+
+@keyframes float6 {
+  0%   { transform: translate(-40px, -100px) scale(1); opacity: 0.7; }
+  25%  { transform: translate(-80px, -80px) scale(0.5); opacity: 0.5; }
+  50%  { transform: translate(-20px, -140px) scale(1.2); opacity: 1; }
+  75%  { transform: translate(-60px, -90px) scale(0.9); opacity: 0.8; }
+  100% { transform: translate(-40px, -100px) scale(1); opacity: 0.7; }
+}
+
+@keyframes float7 {
+  0%   { transform: translate(120px, 10px) scale(0.8); opacity: 0.5; }
+  25%  { transform: translate(80px, -20px) scale(1.1); opacity: 0.9; }
+  50%  { transform: translate(140px, 50px) scale(0.7); opacity: 0.6; }
+  75%  { transform: translate(100px, 30px) scale(1.3); opacity: 1; }
+  100% { transform: translate(120px, 10px) scale(0.8); opacity: 0.5; }
+}
+
+@keyframes float8 {
+  0%   { transform: translate(-20px, 110px) scale(1.1); opacity: 0.8; }
+  25%  { transform: translate(-60px, 80px) scale(0.6); opacity: 0.4; }
+  50%  { transform: translate(10px, 140px) scale(1); opacity: 0.9; }
+  75%  { transform: translate(-40px, 100px) scale(1.4); opacity: 1; }
+  100% { transform: translate(-20px, 110px) scale(1.1); opacity: 0.8; }
+}

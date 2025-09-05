@@ -1,0 +1,59 @@
+@use './variables.scss' as *;
+
+// Mixin for user select none
+@mixin no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+// Mixin for app region drag
+@mixin app-region-drag {
+  -webkit-app-region: drag;
+}
+
+// Mixin for app region no-drag
+@mixin app-region-no-drag {
+  -webkit-app-region: no-drag;
+}
+
+// Mixin for hover effects
+@mixin hover-effect($color: $primary-color) {
+  transition: color $transition-normal;
+  
+  &:hover {
+    color: $color;
+  }
+}
+
+// Mixin for button styles
+@mixin button-base {
+  border: none;
+  border-radius: $border-radius-lg;
+  cursor: pointer;
+  transition: all $transition-slow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Mixin for card styles
+@mixin card-base {
+  background-color: $background-card;
+  border-radius: $border-radius-md;
+  transition: all $transition-normal;
+}
+
+// Mixin for responsive design
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
