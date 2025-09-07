@@ -1,3 +1,4 @@
+// hooks/useWindowControls.ts
 import { useCallback, useState, useEffect } from 'react';
 
 export const useWindowControls = () => {

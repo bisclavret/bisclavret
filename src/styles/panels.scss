@@ -42,7 +42,7 @@
 .left-panel .info-text {
   font-size: 1.2rem;
   color: $text-muted;
-  max-width: 500px;
+  max-width: 100%;
   @include hover-effect;
 }
 
@@ -126,7 +126,7 @@
 .footer-meta {
   flex-shrink: 0;
   font-size: 0.8rem;
-  color: #777;
+  color: $text-secondary;
   text-align: right;
   display: flex;
   align-items: center;
@@ -147,7 +147,7 @@
 }
 
 /* Light mode panels */
-@media (prefers-color-scheme: light) {
+body.light-theme {
   .left-panel .info-text {
     color: $text-secondary-light;
   }
@@ -191,5 +191,9 @@
 
   .footer-icon {
     fill: black;
+
+    &:hover {
+      fill: $primary-color-light;
+    }
   }
 }

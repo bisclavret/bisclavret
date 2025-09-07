@@ -1,37 +1,69 @@
-import React from 'react';
-import { useExternalLink } from '../hooks/useExternalLink';
+// RightPanel.tsx
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const RightPanel: React.FC = () => {
-  const { openExternalLink } = useExternalLink();
+  const { t } = useTranslation();
+  const [version, setVersion] = useState<string>('0.0.0');
 
-  const handleGitHubClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    openExternalLink('https://github.com/bisclavret');
-  };
+  useEffect(() => {
+    async function fetchVersion() {
+      try {
+        if (window.__TAURI__) {
+          const { getVersion } = await import('@tauri-apps/api/app');
+          const v = await getVersion();
+          setVersion(v);
+        } else {
+          setVersion('dev-0.0.1');
+        }
+      } catch (err) {
+        console.error('Failed to fetch app version', err);
+        setVersion('0.0.1');
+      }
+    }
+
+    fetchVersion();
+  }, []);
 
   return (
     <div className="right-panel">
-      <button className="new-story">Create New Story</button>
-     
+      <button className="new-story">{t('rightPanel.createNewStory')}</button>
+
       <div className="workspace-header">
-        <h3>Workspace</h3>
+        <h3>{t('rightPanel.workspace')}</h3>
         <hr />
       </div>
+
       <div className="story-list">
         <div className="story-item">Story 1</div>
         <div className="story-item">Story 2</div>
         <div className="story-item">Story 3</div>
       </div>
+
       <div className="footer-meta">
-        &copy; 2025 Chevrefoil Project (v0.0.0)
-        <a 
-          href="https://github.com/bisclavret" 
-          className="github-link" 
-          onClick={handleGitHubClick}
-          role="button"
-          tabIndex={0}
+        &copy; 2025 Chevrefoil Project (v{version}){' '}
+        <a
+          href="https://github.com/bisclavret"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open GitHub repository"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            textDecoration: 'none',
+            background: 'none',
+            border: 'none',
+            padding: 0,
+            cursor: 'pointer',
+          }}
         >
-          <svg className="footer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <svg
+            className="footer-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32 32"
+            width="20"
+            height="20"
+          >
             <path d="M16 4C9.371094 4 4 9.371094 4 16C4 21.300781 7.4375 25.800781 12.207031 27.386719C12.808594 27.496094 13.027344 27.128906 13.027344 26.808594C13.027344 26.523438 13.015625 25.769531 13.011719 24.769531C9.671875 25.492188 8.96875 23.160156 8.96875 23.160156C8.421875 21.773438 7.636719 21.402344 7.636719 21.402344C6.546875 20.660156 7.71875 20.675781 7.71875 20.675781C8.921875 20.761719 9.554688 21.910156 9.554688 21.910156C10.625 23.746094 12.363281 23.214844 13.046875 22.910156C13.15625 22.132813 13.46875 21.605469 13.808594 21.304688C11.144531 21.003906 8.34375 19.972656 8.34375 15.375C8.34375 14.0625 8.8125 12.992188 9.578125 12.152344C9.457031 11.851563 9.042969 10.628906 9.695313 8.976563C9.695313 8.976563 10.703125 8.65625 12.996094 10.207031C13.953125 9.941406 14.980469 9.808594 16 9.804688C17.019531 9.808594 18.046875 9.941406 19.003906 10.207031C21.296875 8.65625 22.300781 8.976563 22.300781 8.976563C22.957031 10.628906 22.546875 11.851563 22.421875 12.152344C23.191406 12.992188 23.652344 14.0625 23.652344 15.375C23.652344 19.984375 20.847656 20.996094 18.175781 21.296875C18.605469 21.664063 18.988281 22.398438 18.988281 23.515625C18.988281 25.121094 18.976563 26.414063 18.976563 26.808594C18.976563 27.128906 19.191406 27.503906 19.800781 27.386719C24.566406 25.796875 28 21.300781 28 16C28 9.371094 22.628906 4 16 4Z"/>
           </svg>
         </a>

@@ -6,6 +6,7 @@
   display: inline-block;
 }
 
+
 /* Magical sparkles */
 .sparkle-container {
   z-index: $z-sparkle;
@@ -26,6 +27,7 @@
   background: radial-gradient(circle, $primary-color 0%, $primary-color 30%, rgba(100, 108, 255, 0.4) 60%, transparent 100%);
   border-radius: 50%;
   pointer-events: none;
+  opacity: 0;
   z-index: $z-sparkle;
   box-shadow: 
     0 0 10px $primary-color,
@@ -145,4 +147,10 @@
   50%  { transform: translate(10px, 140px) scale(1); opacity: 0.9; }
   75%  { transform: translate(-40px, 100px) scale(1.4); opacity: 1; }
   100% { transform: translate(-20px, 110px) scale(1.1); opacity: 0.8; }
+}
+
+
+/* Light theme adjustments */
+body.light-theme {
+  // Sparkle adjustments can be added here if needed
 }

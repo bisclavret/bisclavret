@@ -41,13 +41,21 @@ body::after {
 }
 
 /* Light mode */
-@media (prefers-color-scheme: light) {
-  :root {
-    color: $text-primary-light;
-    background-color: $background-light;
-  }
+body.light-theme {
+  color: $text-primary-light;
+  background-color: $background-light;
 
-  body::after {
+  &::after {
     background-color: $border-color-light;
+  }
+}
+
+/* Dark mode */
+body.dark-theme {
+  color: $text-primary;
+  background-color: $background-dark;
+
+  &::after {
+    background-color: $border-color;
   }
 }

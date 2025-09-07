@@ -1,0 +1,101 @@
+{
+  "title": "Bisclavret",
+  "logoAlt": "Bisclavret Logo",
+  "menu": {
+    "file": "File",
+    "edit": "Edit",
+    "view": "View",
+    "plugins": "Plugins",
+    "help": "Help"
+  },
+  "fileMenu": {
+    "newStory": "New Story",
+    "newChapter": "New Chapter",
+    "openStory": "Open Story",
+    "saveStory": "Save Story",
+    "saveAs": "Save As",
+    "export": "Export",
+    "recentFiles": "Recent Files",
+    "preferences": "Preferences",
+    "exit": "Exit"
+  },
+  "preferencesMenu": {
+    "themes": "Themes",
+    "language": "Language",
+    "aiModel": "AI Model"
+  },
+  "editMenu": {
+    "undo": "Undo",
+    "redo": "Redo",
+    "cut": "Cut",
+    "copy": "Copy",
+    "paste": "Paste",
+    "find": "Find",
+    "replace": "Replace",
+    "aiSuggestions": "AI Suggestions",
+    "grammarCheck": "Grammar Check"
+  },
+  "viewMenu": {
+    "toggleLeftPanel": "Toggle Left Panel",
+    "toggleRightPanel": "Toggle Right Panel",
+    "fullScreen": "Full Screen",
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out"
+  },
+  "pluginsMenu": {
+    "managePlugins": "Manage Plugins",
+    "installPlugin": "Install Plugin",
+    "luaScriptEditor": "Lua Script Editor",
+    "runLuaScript": "Run Lua Script"
+  },
+  "helpMenu": {
+    "documentation": "Documentation",
+    "about": "About",
+    "checkForUpdates": "Check for Updates"
+  },
+  "windowControls": {
+    "restore": "Restore",
+    "maximize": "Maximize",
+    "minimize": "Minimize",
+    "close": "Close"
+  },
+  "settings": {
+    "language": "Language",
+    "english": "English",
+    "french": "French",
+    "german": "German",
+    "themes": "Themes",
+    "system": "System",
+    "dark": "Dark",
+    "light": "Light",
+    "default": "(default)",
+    "aiModel": "AI Model",
+    "selectModel": "Select Model",
+    "selectAIModel": "Select AI Model",
+    "apiKey": "API Key",
+    "enterApiKey": "Enter your API key",
+    "save": "Save",
+    "modelPath": "Model Path",
+    "noModelSelected": "No model selected",
+    "setup": "Setup",
+    "prompt": "Prompt",
+    "promptTemplate": "Prompt Template",
+    "promptTemplatePlaceholder": "Enter your prompt template here..."
+  },
+  "notifications": {
+    "settingsSaved": "Settings saved successfully!",
+    "settingsSavedTitle": "Success",
+    "error": "An error occurred",
+    "warning": "Warning",
+    "info": "Information"
+  },
+  "leftPanel": {
+    "subtitle": "Transform Your Story with AI",
+    "infoText": "Select a workspace or create a new story."
+  },
+  "rightPanel": {
+    "createNewStory": "Create New Story",
+    "workspace": "Workspace",
+    "untitled": "Untitled"
+  }
+}

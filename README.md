@@ -11,7 +11,6 @@ A modern, AI-driven story editor built with Tauri, React, TypeScript, and SCSS.
 - 🌙 To be continued...
 
 ## 🚀 Getting Started
-
 - 🌙 To be continued...
 
 ### Prerequisites
@@ -38,6 +37,16 @@ A modern, AI-driven story editor built with Tauri, React, TypeScript, and SCSS.
    npm run tauri dev
    ```
 
+### Internationalization Setup
+
+The app supports multiple languages. To add or modify translations:
+
+1. Edit JSON files in `src/locales/` (e.g., `en.json`, `fr.json`, `de.json`)
+2. Use the `useTranslation` hook in components: `const { t } = useTranslation();`
+3. Access translations with `t('key')`
+
+For more details, see the i18next documentation.
+
 ### Building
 
 ```bash
@@ -60,14 +69,23 @@ npm run tauri build
 ```
 bisclavret/
 ├── src/                    # React application
-│   ├── components/         # React components
+│   ├── assets/            # Static assets (icons, images)
+│   ├── components/        # Reusable React components
 │   ├── hooks/             # Custom React hooks
-│   ├── styles/            # SCSS stylesheets
-│   └── main.tsx           # Application entry point
+│   ├── locales/           # Internationalization files (JSON)
+│   ├── styles/            # SCSS stylesheets with variables and mixins
+│   ├── views/             # Page/screen components
+│   ├── App.tsx            # Main app component
+│   ├── i18n.ts            # i18next configuration
+│   ├── main.tsx           # Application entry point
+│   └── vite-env.d.ts      # Vite type definitions
 ├── src-tauri/             # Tauri backend
 │   ├── src/               # Rust source code
-│   └── Cargo.toml         # Rust dependencies
-└── public/                # Static assets
+│   ├── Cargo.toml         # Rust dependencies
+│   ├── tauri.conf.json    # Tauri configuration
+│   └── icons/             # App icons
+├── public/                # Public static assets
+└── package.json           # Node.js dependencies and scripts
 ```
 
 ## 🤝 Contributing

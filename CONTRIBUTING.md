@@ -47,10 +47,16 @@ Thank you for your interest in contributing to Bisclavret! This document provide
 
 ```
 src/
-├── components/     # React components
-├── hooks/         # Custom React hooks
-├── styles/        # SCSS stylesheets
-└── main.tsx       # Application entry point
+├── assets/         # Static assets (icons, images)
+├── components/     # Reusable React components
+├── hooks/          # Custom React hooks
+├── locales/        # Internationalization files (JSON)
+├── styles/         # SCSS stylesheets with variables and mixins
+├── views/          # Page/screen components
+├── App.tsx         # Main app component
+├── i18n.ts         # i18next configuration
+├── main.tsx        # Application entry point
+└── vite-env.d.ts   # Vite type definitions
 ```
 
 ### Branching Strategy
@@ -140,6 +146,6 @@ By contributing to Bisclavret, you agree that your contributions will be license
 
 - **GitHub Issues**: For bugs and feature requests
 - **Discussions**: For questions and general discussion
-- **Discord**: [Join our community](https://discord.gg/bisclavret) (if available)
+- **Discord**: [Join our community](https://discord.gg/JWGzV7q2)
 
-Thank you for contributing to Bisclavret! 🎉
+Thank you for contributing to Bisclavret!

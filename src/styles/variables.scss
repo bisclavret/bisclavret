@@ -1,5 +1,6 @@
 // Color variables
 $primary-color: #646cff;
+$primary-color-light: #a0a6ff;
 $background-dark: #030405;
 $background-panel: #0f0f17;
 $background-card: #1c1c28;
@@ -43,5 +44,5 @@ $transition-slower: 0.3s ease;
 // Z-index
 $z-titlebar: 1000;
 $z-titlebar-border: 1001;
-$z-dropdown: 1002;
-$z-sparkle: 1002;
+$z-dropdown: 1003;
+$z-sparkle: 2;

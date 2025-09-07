@@ -1,0 +1,158 @@
+@use '../styles/variables.scss' as *;
+
+.notification-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000; // Very high z-index to appear above everything
+  animation: fadeIn 0.2s ease-out;
+}
+
+.notification-modal {
+  background-color: $background-card;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  min-width: 300px;
+  max-width: 500px;
+  animation: slideIn 0.3s ease-out;
+  position: relative;
+  overflow: hidden;
+  user-select: none; // Disable text selection for entire modal
+
+  &.success {
+    border-left: 4px solid #10b981;
+    .notification-icon {
+      color: #10b981;
+      background-color: rgba(16, 185, 129, 0.1);
+    }
+  }
+
+  &.info {
+    border-left: 4px solid #3b82f6;
+    .notification-icon {
+      color: #3b82f6;
+      background-color: rgba(59, 130, 246, 0.1);
+    }
+  }
+
+  &.warning {
+    border-left: 4px solid #f59e0b;
+    .notification-icon {
+      color: #f59e0b;
+      background-color: rgba(245, 158, 11, 0.1);
+    }
+  }
+
+  &.error {
+    border-left: 4px solid #ef4444;
+    .notification-icon {
+      color: #ef4444;
+      background-color: rgba(239, 68, 68, 0.1);
+    }
+  }
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  padding: $spacing-lg;
+  padding-right: calc($spacing-lg + 30px); // Extra padding for close button
+  gap: $spacing-md;
+  user-select: none; // Disable text selection
+}
+
+.notification-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.notification-message {
+  color: $text-primary;
+  font-size: 16px;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.notification-close {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: $text-secondary;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $border-radius-sm;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: $background-card-hover;
+    color: $text-primary;
+  }
+}
+
+// Light theme adjustments
+body.light-theme {
+  .notification-modal-overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .notification-modal {
+    background-color: $background-card-light;
+    border-color: $border-color-light;
+
+    .notification-message {
+      color: $text-primary-light;
+    }
+
+    .notification-close {
+      color: $text-secondary-light;
+
+      &:hover {
+        background-color: $background-card-hover-light;
+        color: $text-primary-light;
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

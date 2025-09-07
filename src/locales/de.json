@@ -1,0 +1,101 @@
+{
+  "title": "Bisclavret",
+  "logoAlt": "Bisclavret Logo",
+  "menu": {
+    "file": "Datei",
+    "edit": "Bearbeiten",
+    "view": "Ansicht",
+    "plugins": "Plugins",
+    "help": "Hilfe"
+  },
+  "fileMenu": {
+    "newStory": "Neue Geschichte",
+    "newChapter": "Neues Kapitel",
+    "openStory": "Geschichte öffnen",
+    "saveStory": "Geschichte speichern",
+    "saveAs": "Speichern unter",
+    "export": "Exportieren",
+    "recentFiles": "Zuletzt verwendete Dateien",
+    "preferences": "Einstellungen",
+    "exit": "Beenden"
+  },
+  "preferencesMenu": {
+    "themes": "Themen",
+    "language": "Sprache",
+    "aiModel": "KI-Modell"
+  },
+  "editMenu": {
+    "undo": "Rückgängig",
+    "redo": "Wiederholen",
+    "cut": "Ausschneiden",
+    "copy": "Kopieren",
+    "paste": "Einfügen",
+    "find": "Suchen",
+    "replace": "Ersetzen",
+    "aiSuggestions": "KI-Vorschläge",
+    "grammarCheck": "Grammatikprüfung"
+  },
+  "viewMenu": {
+    "toggleLeftPanel": "Linkes Panel umschalten",
+    "toggleRightPanel": "Rechtes Panel umschalten",
+    "fullScreen": "Vollbild",
+    "zoomIn": "Vergrößern",
+    "zoomOut": "Verkleinern"
+  },
+  "pluginsMenu": {
+    "managePlugins": "Plugins verwalten",
+    "installPlugin": "Plugin installieren",
+    "luaScriptEditor": "Lua-Skript-Editor",
+    "runLuaScript": "Lua-Skript ausführen"
+  },
+  "helpMenu": {
+    "documentation": "Dokumentation",
+    "about": "Über",
+    "checkForUpdates": "Nach Updates suchen"
+  },
+  "windowControls": {
+    "restore": "Wiederherstellen",
+    "maximize": "Maximieren",
+    "minimize": "Minimieren",
+    "close": "Schließen"
+  },
+  "settings": {
+    "language": "Sprache",
+    "english": "Englisch",
+    "french": "Französisch",
+    "german": "Deutsch",
+    "themes": "Themen",
+    "system": "System",
+    "dark": "Dunkel",
+    "light": "Hell",
+    "default": "(Standard)",
+    "aiModel": "KI-Modell",
+    "selectModel": "Modell auswählen",
+    "selectAIModel": "KI-Modell auswählen",
+    "apiKey": "API-Schlüssel",
+    "enterApiKey": "Geben Sie Ihren API-Schlüssel ein",
+    "save": "Speichern",
+    "modelPath": "Modellpfad",
+    "noModelSelected": "Kein Modell ausgewählt",
+    "setup": "Einrichtung",
+    "prompt": "Prompt",
+    "promptTemplate": "Prompt-Vorlage",
+    "promptTemplatePlaceholder": "Geben Sie Ihre Prompt-Vorlage hier ein..."
+  },
+  "leftPanel": {
+    "subtitle": "Verwandeln Sie Ihre Geschichte mit KI",
+    "infoText": "Wählen Sie einen Arbeitsbereich aus oder erstellen Sie eine neue Geschichte."
+  },
+  "rightPanel": {
+    "createNewStory": "Neue Geschichte erstellen",
+    "workspace": "Arbeitsbereich",
+    "untitled": "Unbenannt"
+  },
+  "notifications": {
+    "settingsSaved": "Einstellungen erfolgreich gespeichert!",
+    "settingsSavedTitle": "Erfolg",
+    "error": "Ein Fehler ist aufgetreten",
+    "warning": "Warnung",
+    "info": "Information"
+  }
+}

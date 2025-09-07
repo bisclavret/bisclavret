@@ -1,0 +1,101 @@
+{
+  "title": "Bisclavret",
+  "logoAlt": "Logo Bisclavret",
+  "menu": {
+    "file": "Fichier",
+    "edit": "Édition",
+    "view": "Affichage",
+    "plugins": "Extensions",
+    "help": "Aide"
+  },
+  "fileMenu": {
+    "newStory": "Nouvelle Histoire",
+    "newChapter": "Nouveau Chapitre",
+    "openStory": "Ouvrir Histoire",
+    "saveStory": "Enregistrer Histoire",
+    "saveAs": "Enregistrer Sous",
+    "export": "Exporter",
+    "recentFiles": "Fichiers Récents",
+    "preferences": "Préférences",
+    "exit": "Quitter"
+  },
+  "preferencesMenu": {
+    "themes": "Thèmes",
+    "language": "Langue",
+    "aiModel": "Modèle IA"
+  },
+  "editMenu": {
+    "undo": "Annuler",
+    "redo": "Rétablir",
+    "cut": "Couper",
+    "copy": "Copier",
+    "paste": "Coller",
+    "find": "Rechercher",
+    "replace": "Remplacer",
+    "aiSuggestions": "Suggestions IA",
+    "grammarCheck": "Vérification Grammaticale"
+  },
+  "viewMenu": {
+    "toggleLeftPanel": "Basculer Panneau Gauche",
+    "toggleRightPanel": "Basculer Panneau Droit",
+    "fullScreen": "Plein Écran",
+    "zoomIn": "Zoom Avant",
+    "zoomOut": "Zoom Arrière"
+  },
+  "pluginsMenu": {
+    "managePlugins": "Gérer Extensions",
+    "installPlugin": "Installer Extension",
+    "luaScriptEditor": "Éditeur Script Lua",
+    "runLuaScript": "Exécuter Script Lua"
+  },
+  "helpMenu": {
+    "documentation": "Documentation",
+    "about": "À Propos",
+    "checkForUpdates": "Vérifier Mises à Jour"
+  },
+  "windowControls": {
+    "restore": "Restaurer",
+    "maximize": "Maximiser",
+    "minimize": "Minimiser",
+    "close": "Fermer"
+  },
+  "settings": {
+    "language": "Langue",
+    "english": "Anglais",
+    "french": "Français",
+    "german": "Allemand",
+    "themes": "Thèmes",
+    "system": "Système",
+    "dark": "Sombre",
+    "light": "Clair",
+    "default": "(par défaut)",
+    "aiModel": "Modèle IA",
+    "selectModel": "Sélectionner Modèle",
+    "selectAIModel": "Sélectionner Modèle IA",
+    "apiKey": "Clé API",
+    "enterApiKey": "Entrez votre clé API",
+    "save": "Enregistrer",
+    "modelPath": "Chemin du Modèle",
+    "noModelSelected": "Aucun modèle sélectionné",
+    "setup": "Configuration",
+    "prompt": "Invite",
+    "promptTemplate": "Modèle d'invite",
+    "promptTemplatePlaceholder": "Entrez votre modèle d'invite ici..."
+  },
+  "leftPanel": {
+    "subtitle": "Transformez Votre Histoire avec l'IA",
+    "infoText": "Sélectionnez un espace de travail ou créez une nouvelle histoire."
+  },
+  "rightPanel": {
+    "createNewStory": "Créer Nouvelle Histoire",
+    "workspace": "Espace de Travail",
+    "untitled": "Sans Titre"
+  },
+  "notifications": {
+    "settingsSaved": "Paramètres enregistrés avec succès !",
+    "settingsSavedTitle": "Succès",
+    "error": "Une erreur s'est produite",
+    "warning": "Avertissement",
+    "info": "Information"
+  }
+}

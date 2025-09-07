@@ -1,61 +1,116 @@
+// Titlebar.tsx
 import React from 'react';
-import { useWindowControls } from '../hooks/useWindowControls';
+import { useTranslation } from 'react-i18next';
+import { useDropdownMenu } from '../hooks/useDropdownMenu';
+import MenuItem from './MenuItem';
+import WindowControls from './WindowControls';
+import icon from '../assets/icon.png';
 
-const Titlebar: React.FC = () => {
-  const { minimizeWindow, maximizeWindow, closeWindow, isMaximized } = useWindowControls();
+interface TitlebarProps {
+  onOpenPreferences?: (tab?: string) => void;
+}
+
+const Titlebar: React.FC<TitlebarProps> = ({ onOpenPreferences }) => {
+  const { t } = useTranslation();
+  const { activeDropdown, activeSubmenu, menuRef, openSubmenu, closeSubmenu, toggleDropdown, openDropdownOnHover } = useDropdownMenu();
 
   return (
     <div className="titlebar">
       {/* Left: Logo + Menus */}
       <div className="titlebar-left">
-        <img src="/src-tauri/icons/icon.png" className="logo" alt="Bisclavret Logo" />
+        <img src={icon} className="logo" alt={t('logoAlt')} />
 
-        <div className="menu-bar">
+        <div className="menu-bar" ref={menuRef}>
           <div className="menu">
-            <span>File</span>
-            <div className="dropdown">
-              <div className="dropdown-item">New Story</div>
-              <div className="dropdown-item">Open</div>
-              <div className="dropdown-item">Save</div>
-              <div className="dropdown-item">Exit</div>
-            </div>
+            <span onClick={() => toggleDropdown('file')} onMouseEnter={() => openDropdownOnHover('file')}>{t('menu.file')}</span>
+            {activeDropdown === 'file' && <div className="dropdown" onMouseEnter={() => openDropdownOnHover('file')}>
+              <MenuItem label={t('fileMenu.newStory')} />
+              <MenuItem label={t('fileMenu.newChapter')} />
+              <hr />
+              <MenuItem label={t('fileMenu.openStory')} />
+              <hr />
+              <MenuItem label={t('fileMenu.saveStory')} />
+              <MenuItem label={t('fileMenu.saveAs')} />
+              <hr />
+              <MenuItem label={t('fileMenu.export')} />
+              <MenuItem label={t('fileMenu.recentFiles')} />
+              <div className="submenu-container" onMouseEnter={openSubmenu} onMouseLeave={closeSubmenu}>
+                <MenuItem
+                  label={t('fileMenu.preferences')}
+                  hasSubmenu
+                  onClick={() => { onOpenPreferences?.(); toggleDropdown(''); }}
+                />
+                {activeSubmenu === 'preferences' && <div className="submenu">
+                  <MenuItem
+                    label={t('preferencesMenu.themes')}
+                    onClick={() => { onOpenPreferences?.('themes'); toggleDropdown(''); }}
+                  />
+                  <MenuItem
+                    label={t('preferencesMenu.language')}
+                    onClick={() => { onOpenPreferences?.('language'); toggleDropdown(''); }}
+                  />
+                  <MenuItem
+                    label={t('preferencesMenu.aiModel')}
+                    onClick={() => { onOpenPreferences?.('aiModel'); toggleDropdown(''); }}
+                  />
+                </div>}
+              </div>
+              <MenuItem label={t('fileMenu.exit')} />
+            </div>}
           </div>
-          <div className="menu"><span>Edit</span></div>
-          <div className="menu"><span>View</span></div>
-          <div className="menu"><span>Plugins</span></div>
-          <div className="menu"><span>Help</span></div>
+
+          <div className="menu">
+            <span onClick={() => toggleDropdown('edit')} onMouseEnter={() => openDropdownOnHover('edit')}>{t('menu.edit')}</span>
+            {activeDropdown === 'edit' && <div className="dropdown" onMouseEnter={() => openDropdownOnHover('edit')}>
+              <MenuItem label={t('editMenu.undo')} />
+              <MenuItem label={t('editMenu.redo')} />
+              <MenuItem label={t('editMenu.cut')} />
+              <MenuItem label={t('editMenu.copy')} />
+              <MenuItem label={t('editMenu.paste')} />
+              <MenuItem label={t('editMenu.find')} />
+              <MenuItem label={t('editMenu.replace')} />
+              <MenuItem label={t('editMenu.aiSuggestions')} />
+              <MenuItem label={t('editMenu.grammarCheck')} />
+            </div>}
+          </div>
+
+          <div className="menu">
+            <span onClick={() => toggleDropdown('view')} onMouseEnter={() => openDropdownOnHover('view')}>{t('menu.view')}</span>
+            {activeDropdown === 'view' && <div className="dropdown" onMouseEnter={() => openDropdownOnHover('view')}>
+              <MenuItem label={t('viewMenu.toggleLeftPanel')} />
+              <MenuItem label={t('viewMenu.toggleRightPanel')} />
+              <MenuItem label={t('viewMenu.fullScreen')} />
+              <MenuItem label={t('viewMenu.zoomIn')} />
+              <MenuItem label={t('viewMenu.zoomOut')} />
+            </div>}
+          </div>
+
+          <div className="menu">
+            <span onClick={() => toggleDropdown('plugins')} onMouseEnter={() => openDropdownOnHover('plugins')}>{t('menu.plugins')}</span>
+            {activeDropdown === 'plugins' && <div className="dropdown" onMouseEnter={() => openDropdownOnHover('plugins')}>
+              <MenuItem label={t('pluginsMenu.managePlugins')} />
+              <MenuItem label={t('pluginsMenu.installPlugin')} />
+              <MenuItem label={t('pluginsMenu.luaScriptEditor')} />
+              <MenuItem label={t('pluginsMenu.runLuaScript')} />
+            </div>}
+          </div>
+
+          <div className="menu">
+            <span onClick={() => toggleDropdown('help')} onMouseEnter={() => openDropdownOnHover('help')}>{t('menu.help')}</span>
+            {activeDropdown === 'help' && <div className="dropdown" onMouseEnter={() => openDropdownOnHover('help')}>
+              <MenuItem label={t('helpMenu.documentation')} />
+              <MenuItem label={t('helpMenu.about')} />
+              <MenuItem label={t('helpMenu.checkForUpdates')} />
+            </div>}
+          </div>
         </div>
       </div>
 
       {/* Center: Title */}
-      <div className="titlebar-center">Bisclavret</div>
+      <div className="titlebar-center">{t('title')}</div>
 
       {/* Right: Window buttons */}
-      <div className="titlebar-right window-controls">
-        <button id="maximize" onClick={maximizeWindow} title={isMaximized ? "Restore" : "Maximize"}>
-          {isMaximized ? (
-            <svg viewBox="0 0 8 8" width="8" height="8">
-              <rect x="2" y="3" width="4" height="3" stroke="rgba(0,0,0,0.5)" strokeWidth="1.5" fill="none"/>
-              <rect x="3" y="2" width="4" height="3" stroke="rgba(0,0,0,0.5)" strokeWidth="1.5" fill="none"/>
-            </svg>
-          ) : (
-            <svg viewBox="0 0 8 8" width="8" height="8">
-              <rect x="1.5" y="1.5" width="5" height="5" stroke="rgba(0,0,0,0.5)" strokeWidth="1.5" fill="none"/>
-            </svg>
-          )}
-        </button>
-        <button id="minimize" onClick={minimizeWindow} title="Minimize">
-          <svg viewBox="0 0 8 8" width="8" height="8">
-            <line x1="1" y1="4" x2="7" y2="4" stroke="rgba(0,0,0,0.5)" strokeWidth="1.5"/>
-          </svg>
-        </button>
-        <button id="close" onClick={closeWindow} title="Close">
-          <svg viewBox="0 0 8 8" width="8" height="8">
-            <line x1="1" y1="1" x2="7" y2="7" stroke="rgba(0,0,0,0.5)" strokeWidth="1.5"/>
-            <line x1="7" y1="1" x2="1" y2="7" stroke="rgba(0,0,0,0.5)" strokeWidth="1.5"/>
-          </svg>
-        </button>
-      </div>
+      <WindowControls />
     </div>
   );
 };

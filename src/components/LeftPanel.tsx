@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import bisclavretLogo from '/bisclavret.png';
 
 const LeftPanel: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className="left-panel">
       <div className="logo-container">
@@ -18,8 +20,8 @@ const LeftPanel: React.FC = () => {
         </div>
       </div>
       <h1>Bisclavret</h1>
-      <p className="subtitle">AI-powered Story Editor</p>
-      <p className="info-text">Select a workspace or create a new story.</p>
+      <p className="subtitle">{t('leftPanel.subtitle')}</p>
+      <p className="info-text">{t('leftPanel.infoText')}</p>
     </div>
   );
 };
