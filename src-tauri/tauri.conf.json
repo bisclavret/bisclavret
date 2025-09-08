@@ -12,10 +12,12 @@
   "app": {
     "windows": [
       {
+        "label": "main",
         "title": "Bisclavret",
         "width": 1280,
         "height": 720,
         "decorations": false,
+        "titleBarStyle": "Overlay",
         "minWidth": 960,
         "minHeight": 540,
         "resizable": true,

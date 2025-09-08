@@ -1,4 +1,5 @@
 @use '../styles/variables.scss' as *;
+@use 'sass:color';
 
 .modal-overlay {
   position: fixed;
@@ -23,7 +24,7 @@
   width: 90%;
   min-height: 50vh;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   z-index: 1004;
   user-select: none;
@@ -37,5 +38,555 @@
 body.light-theme {
   .modal-content {
     background-color: $background-card-light;
+  }
+}
+
+// Generic Modal Header (can be used by any modal)
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-sm;
+  border-bottom: 1px solid $border-color;
+
+  h2 {
+    margin: 0;
+    color: $text-primary;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: $text-secondary;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $border-radius-sm;
+
+    &:hover {
+      background-color: $background-card-hover;
+      color: $text-primary;
+    }
+  }
+}
+
+// Generic Modal Body Layout
+.modal-body {
+  display: flex;
+  gap: $spacing-lg;
+}
+
+// Generic Vertical Tabs (can be used by any modal)
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  gap: $spacing-sm;
+  background-color: $background-card;
+  padding-bottom: $spacing-sm;
+
+  button {
+    background: none;
+    border: none;
+    padding: $spacing-sm;
+    text-align: left;
+    color: $text-secondary;
+    cursor: pointer;
+    border-radius: $border-radius-sm;
+
+    &.active {
+      background-color: $background-card-hover;
+      color: $text-primary;
+    }
+
+    &:hover {
+      background-color: $background-card-hover;
+      color: $text-primary;
+    }
+  }
+}
+
+// Generic Main Content Area
+.tab-content {
+  flex: 1;
+  overflow-y: auto;
+  max-height: calc(90vh - 120px);
+  min-height: calc(70vh - 120px);
+
+  h3 {
+    margin-top: 0;
+    color: $text-primary;
+  }
+
+  // Generic Form Elements for Main Tabs
+  .form-group {
+    margin-bottom: $spacing-sm;
+
+    label {
+      display: block;
+      color: $text-primary;
+      font-weight: 500;
+    }
+
+    .checkbox-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+
+      .checkbox-text {
+        flex: 1;
+        margin-right: $spacing-sm;
+
+        strong {
+          color: $text-primary;
+          font-weight: 600;
+        }
+
+        small {
+          color: $text-secondary;
+          font-size: 12px;
+        }
+      }
+
+      input[type="checkbox"] {
+        width: 18px !important;
+        height: 18px !important;
+        background-color: $background-panel !important;
+        border: 1px solid $border-color !important;
+        border-radius: $border-radius-sm !important;
+        appearance: none !important;
+        cursor: pointer !important;
+        position: relative !important;
+        transition: all $transition-fast !important;
+        padding: 0 !important;
+        margin: 0 !important;
+
+        &:checked {
+          background-color: $primary-color !important;
+          border-color: $primary-color !important;
+
+          &::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+          }
+        }
+
+        &:hover {
+          border-color: $primary-color !important;
+        }
+
+        &:focus {
+          outline: none !important;
+          box-shadow: 0 0 0 2px rgba($primary-color, 0.2) !important;
+        }
+      }
+    }
+
+    .input, input, textarea, select {
+      padding: $spacing-sm;
+      width: 100%;
+      background-color: $background-panel;
+      color: $text-primary;
+      border: 1px solid $border-color;
+      border-radius: $border-radius-sm;
+      font-family: inherit;
+      font-size: 14px;
+      box-sizing: border-box;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+      }
+
+      &::placeholder {
+        color: $text-secondary;
+      }
+    }
+
+    textarea {
+      min-height: 120px;
+      line-height: 1.4;
+      resize: vertical;
+      overflow: hidden;
+      word-wrap: break-word;
+    }
+  }
+
+  button {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: $spacing-sm $spacing-md;
+    margin-right: $spacing-sm;
+    border-radius: $border-radius-sm;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color $transition-fast;
+
+    &:hover:not(:disabled) {
+      background-color: color.scale($primary-color, $lightness: -10%);
+    }
+
+    &:disabled {
+      background-color: $text-secondary;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+
+  p {
+    margin: $spacing-sm 0;
+    color: $text-secondary;
+    font-size: 14px;
+  }
+
+  // Generic Custom Select Styles
+  .custom-select {
+    position: relative;
+    width: 100%;
+
+    .select-selected {
+      padding: $spacing-sm;
+      background-color: $background-panel;
+      color: $text-primary;
+      border: 1px solid $border-color;
+      border-radius: $border-radius-sm;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &::after {
+        content: '▼';
+        font-size: 12px;
+        color: $text-secondary;
+      }
+    }
+
+    .select-options {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: $background-card;
+      border: 1px solid $background-panel;
+      border-top: none;
+      border-radius: 0 0 $border-radius-sm $border-radius-sm;
+      z-index: 1005;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+      .select-option {
+        padding: $spacing-sm;
+        cursor: pointer;
+        color: $text-primary;
+
+        &:hover {
+          background-color: $background-card-hover;
+          color: $text-primary;
+        }
+      }
+    }
+  }
+
+  // Generic Sub-tabs (horizontal)
+  .tab-header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 1px solid $border-color;
+
+    h3 {
+      margin: 0;
+      color: $text-primary;
+    }
+
+    .sub-tabs {
+      display: flex;
+      gap: $spacing-sm;
+
+      button {
+        background: none;
+        border: none;
+        padding: $spacing-sm $spacing-md;
+        color: $text-secondary;
+        cursor: pointer;
+        border-radius: $border-radius-sm;
+        border-bottom: 2px solid transparent;
+
+        &.active {
+          color: $text-primary;
+          border-bottom-color: $primary-color;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        &:hover {
+          background-color: $background-card-hover;
+          color: $text-primary;
+        }
+      }
+    }
+  }
+
+  // Generic Sub-tab Content
+  .sub-tab-content {
+    .setup-content, .prompt-content {
+      .form-group {
+        margin-bottom: $spacing-sm;
+      }
+
+      button {
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        padding: $spacing-sm $spacing-md;
+        border-radius: $border-radius-sm;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color $transition-fast;
+
+        &:hover:not(:disabled) {
+          background-color: color.scale($primary-color, $lightness: -10%);
+        }
+
+        &:disabled {
+          background-color: $text-secondary;
+          cursor: not-allowed;
+          opacity: 0.6;
+        }
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 120px;
+        padding: $spacing-sm;
+        background-color: $background-panel;
+        color: $text-primary;
+        border: 1px solid $border-color;
+        border-radius: $border-radius-sm;
+        font-family: inherit;
+        font-size: 14px;
+        line-height: 1.4;
+        resize: vertical;
+        box-sizing: border-box;
+        overflow: hidden;
+        word-wrap: break-word;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+        }
+
+        &::placeholder {
+          color: $text-secondary;
+        }
+      }
+
+      label {
+        display: block;
+        margin-bottom: $spacing-xs;
+        color: $text-primary;
+        font-weight: 500;
+      }
+
+      p {
+        margin: $spacing-sm 0;
+        color: $text-secondary;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// Light theme support for all modal styles
+body.light-theme {
+  .modal-header {
+    border-bottom-color: $border-color-light;
+
+    h2 {
+      color: $text-primary-light;
+    }
+
+    .close-button {
+      color: $text-secondary-light;
+
+      &:hover {
+        background-color: $background-card-hover-light;
+        color: $text-primary-light;
+      }
+    }
+  }
+
+  .tabs {
+    background-color: $background-card-light;
+
+    button {
+      color: $text-secondary-light;
+
+      &.active {
+        background-color: $background-card-hover-light;
+        color: $text-primary-light;
+      }
+
+      &:hover {
+        background-color: $background-card-hover_light;
+        color: $text-primary_light;
+      }
+    }
+  }
+
+  .tab-content {
+    h3 {
+      color: $text-primary-light;
+    }
+
+    .form-group {
+      .checkbox-label {
+        .checkbox-text {
+          strong {
+            color: $text-primary-light;
+          }
+
+          small {
+            color: $text-secondary-light;
+          }
+        }
+
+        input[type="checkbox"] {
+          background-color: $background-panel-light !important;
+          border-color: $border-color-light !important;
+
+          &:checked {
+            background-color: $primary-color !important;
+            border-color: $primary-color !important;
+          }
+
+          &:hover {
+            border-color: $primary-color !important;
+          }
+        }
+      }
+    }
+
+    .custom-select {
+      .select-selected {
+        background-color: $background-panel-light;
+        color: $text-primary-light;
+        border-color: $border-color-light;
+
+        &::after {
+          color: $text-secondary-light;
+        }
+      }
+
+      .select-options {
+        background-color: $background-card-light;
+        border-color: $border-color-light;
+
+        .select-option {
+          color: $text-primary-light;
+
+          &:hover {
+            background-color: $background-card-hover_light;
+            color: $text-primary_light;
+          }
+        }
+      }
+    }
+
+    .tab-header {
+      border-bottom-color: $border-color-light;
+
+      h3 {
+        color: $text-primary-light;
+      }
+
+      .sub-tabs {
+        button {
+          color: $text-secondary-light;
+
+          &.active {
+            color: $text-primary_light;
+            background-color: rgba($primary-color, 0.05);
+            border-bottom-color: $primary-color;
+          }
+
+          &:hover {
+            background-color: $background-card-hover_light;
+            color: $text-primary_light;
+          }
+        }
+      }
+    }
+
+    .sub-tab-content {
+      .setup-content, .prompt-content {
+        .form-group {
+          label {
+            color: $text-primary_light;
+          }
+
+          .input {
+            background-color: $background-panel_light;
+            color: $text-primary_light;
+            border-color: $border-color_light;
+
+            &::placeholder {
+              color: $text-secondary_light;
+            }
+          }
+        }
+
+        button {
+          background-color: $primary-color;
+          color: white;
+
+          &:hover:not(:disabled) {
+            background-color: color.scale($primary-color, $lightness: 10%);
+          }
+
+          &:disabled {
+            background-color: $text-secondary_light;
+          }
+        }
+
+        textarea {
+          background-color: $background-panel_light;
+          color: $text-primary_light;
+          border-color: $border-color_light;
+
+          &::placeholder {
+            color: $text-secondary_light;
+          }
+        }
+
+        label {
+          color: $text-primary_light;
+        }
+
+        p {
+          color: $text-secondary_light;
+        }
+      }
+    }
   }
 }

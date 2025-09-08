@@ -91,6 +91,60 @@
     "workspace": "Espace de Travail",
     "untitled": "Sans Titre"
   },
+  "newStory": {
+    "title": "Créer Nouvelle Histoire",
+    "setupTab": "Configuration",
+    "templateTab": "Modèle",
+    "setup": "Configuration de l'Histoire",
+    "setupDescription": "Commencez par donner un titre à votre histoire et sélectionnez un genre.",
+    "storyTitle": "Titre de l'Histoire",
+    "titlePlaceholder": "Entrez le titre de votre histoire",
+    "genre": "Genre",
+    "selectGenre": "Sélectionnez un genre (optionnel)",
+    "templateOptions": "Options de Modèle",
+    "templateDescription": "Choisissez quelles sections inclure dans votre modèle d'histoire. Vous pouvez toujours ajouter ou supprimer des sections plus tard.",
+    "createStory": "Créer l'Histoire",
+    "successMessage": "Histoire créée avec succès !",
+    "errorMessage": "Échec de la création de l'histoire. Veuillez réessayer."
+  },
+  "template": {
+    "cover": "Page de Couverture",
+    "coverDesc": "Inclure une page de titre avec les informations d'auteur",
+    "foreword": "Avant-propos",
+    "forewordDesc": "Ajouter une section d'avant-propos",
+    "dedication": "Dédicace",
+    "dedicationDesc": "Inclure une page de dédicace",
+    "acknowledgments": "Remerciements",
+    "acknowledgmentsDesc": "Ajouter une section de remerciements",
+    "toc": "Table des Matières",
+    "tocDesc": "Générer automatiquement la table des matières",
+    "chapters": "Structure des Chapitres",
+    "chaptersDesc": "Organiser le contenu en chapitres",
+    "epilogue": "Épilogue",
+    "epilogueDesc": "Inclure une section d'épilogue",
+    "aboutAuthor": "À Propos de l'Auteur",
+    "aboutAuthorDesc": "Ajouter une section à propos de l'auteur"
+  },
+  "genre": {
+    "fantasy": "Fantaisie",
+    "scifi": "Science-Fiction",
+    "romance": "Romance",
+    "mystery": "Mystère",
+    "thriller": "Thriller",
+    "horror": "Horreur",
+    "historical": "Fiction Historique",
+    "contemporary": "Contemporain",
+    "literary": "Fiction Littéraire",
+    "nonfiction": "Non-Fiction",
+    "other": "Autre"
+  },
+  "common": {
+    "next": "Suivant",
+    "back": "Retour"
+  },
+  "error": {
+    "titleRequired": "Veuillez entrer un titre d'histoire"
+  },
   "notifications": {
     "settingsSaved": "Paramètres enregistrés avec succès !",
     "settingsSavedTitle": "Succès",

@@ -91,6 +91,60 @@
     "workspace": "Arbeitsbereich",
     "untitled": "Unbenannt"
   },
+  "newStory": {
+    "title": "Neue Geschichte erstellen",
+    "setupTab": "Einrichtung",
+    "templateTab": "Vorlage",
+    "setup": "Geschichte einrichten",
+    "setupDescription": "Beginnen Sie, indem Sie Ihrer Geschichte einen Titel geben und ein Genre auswählen.",
+    "storyTitle": "Geschichtentitel",
+    "titlePlaceholder": "Geben Sie Ihren Geschichtentitel ein",
+    "genre": "Genre",
+    "selectGenre": "Wählen Sie ein Genre aus (optional)",
+    "templateOptions": "Vorlagenoptionen",
+    "templateDescription": "Wählen Sie, welche Abschnitte in Ihre Geschichtenvorlage aufgenommen werden sollen. Sie können Abschnitte später immer hinzufügen oder entfernen.",
+    "createStory": "Geschichte erstellen",
+    "successMessage": "Geschichte erfolgreich erstellt!",
+    "errorMessage": "Fehler beim Erstellen der Geschichte. Bitte versuchen Sie es erneut."
+  },
+  "template": {
+    "cover": "Titelblatt",
+    "coverDesc": "Titelblatt mit Autorinformationen einschließen",
+    "foreword": "Vorwort",
+    "forewordDesc": "Vorwortabschnitt hinzufügen",
+    "dedication": "Widmung",
+    "dedicationDesc": "Widmungsseite einschließen",
+    "acknowledgments": "Danksagungen",
+    "acknowledgmentsDesc": "Danksagungsabschnitt hinzufügen",
+    "toc": "Inhaltsverzeichnis",
+    "tocDesc": "Inhaltsverzeichnis automatisch generieren",
+    "chapters": "Kapitelstruktur",
+    "chaptersDesc": "Inhalte in Kapiteln organisieren",
+    "epilogue": "Epilog",
+    "epilogueDesc": "Epilogabschnitt einschließen",
+    "aboutAuthor": "Über den Autor",
+    "aboutAuthorDesc": "Abschnitt über den Autor hinzufügen"
+  },
+  "genre": {
+    "fantasy": "Fantasy",
+    "scifi": "Science-Fiction",
+    "romance": "Romanze",
+    "mystery": "Mystery",
+    "thriller": "Thriller",
+    "horror": "Horror",
+    "historical": "Historische Fiktion",
+    "contemporary": "Gegenwart",
+    "literary": "Literarische Fiktion",
+    "nonfiction": "Sachbuch",
+    "other": "Andere"
+  },
+  "common": {
+    "next": "Weiter",
+    "back": "Zurück"
+  },
+  "error": {
+    "titleRequired": "Bitte geben Sie einen Geschichtentitel ein"
+  },
   "notifications": {
     "settingsSaved": "Einstellungen erfolgreich gespeichert!",
     "settingsSavedTitle": "Erfolg",

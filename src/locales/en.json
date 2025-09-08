@@ -97,5 +97,59 @@
     "createNewStory": "Create New Story",
     "workspace": "Workspace",
     "untitled": "Untitled"
+  },
+  "newStory": {
+    "title": "Create New Story",
+    "setupTab": "Setup",
+    "templateTab": "Template",
+    "setup": "Story Setup",
+    "setupDescription": "Start by giving your story a title and selecting a genre.",
+    "storyTitle": "Story Title",
+    "titlePlaceholder": "Enter your story title",
+    "genre": "Genre",
+    "selectGenre": "Select a genre (optional)",
+    "templateOptions": "Template Options",
+    "templateDescription": "Choose which sections to include in your story template. You can always add or remove sections later.",
+    "createStory": "Create Story",
+    "successMessage": "Story created successfully!",
+    "errorMessage": "Failed to create story. Please try again."
+  },
+  "template": {
+    "cover": "Cover Page",
+    "coverDesc": "Include a title page with author information",
+    "foreword": "Foreword",
+    "forewordDesc": "Add a foreword section",
+    "dedication": "Dedication",
+    "dedicationDesc": "Include a dedication page",
+    "acknowledgments": "Acknowledgments",
+    "acknowledgmentsDesc": "Add an acknowledgments section",
+    "toc": "Table of Contents",
+    "tocDesc": "Automatically generate table of contents",
+    "chapters": "Chapter Structure",
+    "chaptersDesc": "Organize content into chapters",
+    "epilogue": "Epilogue",
+    "epilogueDesc": "Include an epilogue section",
+    "aboutAuthor": "About the Author",
+    "aboutAuthorDesc": "Add an about the author section"
+  },
+  "genre": {
+    "fantasy": "Fantasy",
+    "scifi": "Science Fiction",
+    "romance": "Romance",
+    "mystery": "Mystery",
+    "thriller": "Thriller",
+    "horror": "Horror",
+    "historical": "Historical Fiction",
+    "contemporary": "Contemporary",
+    "literary": "Literary Fiction",
+    "nonfiction": "Non-Fiction",
+    "other": "Other"
+  },
+  "common": {
+    "next": "Next",
+    "back": "Back"
+  },
+  "error": {
+    "titleRequired": "Please enter a story title"
   }
 }

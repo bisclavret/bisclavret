@@ -2,7 +2,7 @@ import React from 'react';
 
 interface MenuItemProps {
   label: string;
-  onClick?: () => void;
+  onClick?: (e?: React.MouseEvent) => void;
   hasSubmenu?: boolean;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;

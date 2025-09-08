@@ -4,12 +4,12 @@ import CustomSelect from './CustomSelect';
 
 type ThemeType = 'dark' | 'light' | 'system';
 
-interface ThemesTabProps {
+interface PreferencesThemesTabProps {
   theme: ThemeType;
   onThemeChange: (theme: ThemeType) => void;
 }
 
-const ThemesTab: React.FC<ThemesTabProps> = ({ theme, onThemeChange }) => {
+const PreferencesThemesTab: React.FC<PreferencesThemesTabProps> = ({ theme, onThemeChange }) => {
   const { t } = useTranslation();
 
   const themeOptions = [
@@ -30,4 +30,4 @@ const ThemesTab: React.FC<ThemesTabProps> = ({ theme, onThemeChange }) => {
   );
 };
 
-export default ThemesTab;
+export default PreferencesThemesTab;

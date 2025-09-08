@@ -1,10 +1,15 @@
 // RightPanel.tsx
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import NewStoryModal from './NewStoryModal';
+import { useNewStoryModal } from '../hooks/useNewStoryModal';
+import { useNotification } from '../hooks/useNotification';
 
-const RightPanel: React.FC = () => {
+const LandingRightPanel: React.FC = () => {
   const { t } = useTranslation();
   const [version, setVersion] = useState<string>('0.0.0');
+  const { showNotification } = useNotification();
+  const { isOpen, openModal, closeModal, createStory } = useNewStoryModal(showNotification);
 
   useEffect(() => {
     async function fetchVersion() {
@@ -27,7 +32,7 @@ const RightPanel: React.FC = () => {
 
   return (
     <div className="right-panel">
-      <button className="new-story">{t('rightPanel.createNewStory')}</button>
+      <button className="new-story" onClick={openModal}>{t('rightPanel.createNewStory')}</button>
 
       <div className="workspace-header">
         <h3>{t('rightPanel.workspace')}</h3>
@@ -68,8 +73,15 @@ const RightPanel: React.FC = () => {
           </svg>
         </a>
       </div>
+
+      <NewStoryModal
+        isOpen={isOpen}
+        onClose={closeModal}
+        onCreateStory={createStory}
+        onShowNotification={showNotification}
+      />
     </div>
   );
 };
 
-export default RightPanel;
+export default LandingRightPanel;

@@ -6,6 +6,10 @@
   display: inline-block;
 }
 
+.logo {
+  transition: transform 0.3s ease;
+}
+
 
 /* Magical sparkles */
 .sparkle-container {
@@ -24,7 +28,7 @@
   transform: translate(-50%, -50%);
   width: 8px;
   height: 8px;
-  background: radial-gradient(circle, $primary-color 0%, $primary-color 30%, rgba(100, 108, 255, 0.4) 60%, transparent 100%);
+  background: radial-gradient(circle, $primary-color 0%, $primary-color 30%, rgba($primary-color, 0.4) 60%, transparent 100%);
   border-radius: 50%;
   pointer-events: none;
   opacity: 0;
@@ -32,7 +36,7 @@
   box-shadow: 
     0 0 10px $primary-color,
     0 0 20px $primary-color,
-    0 0 30px rgba(100, 108, 255, 0.8);
+    0 0 30px rgba($primary-color, 0.8);
 
   /* Pulsing glow effect */
   &::before {
@@ -42,7 +46,7 @@
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: radial-gradient(circle, rgba(100, 108, 255, 0.6) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba($primary-color, 0.6) 0%, transparent 70%);
     border-radius: 50%;
     animation: pulse 2s ease-in-out infinite alternate;
   }
@@ -53,7 +57,7 @@
     position: absolute;
     width: 4px;
     height: 4px;
-    background: rgba(100, 108, 255, 0.3);
+    background: rgba($primary-color, 0.3);
     border-radius: 50%;
     top: 50%;
     left: 50%;
@@ -150,7 +154,76 @@
 }
 
 
-/* Light theme adjustments */
-body.light-theme {
-  // Sparkle adjustments can be added here if needed
+/* Purple swirl animation around logo */
+.purple-swirl {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  pointer-events: none;
+  z-index: $z-sparkle;
+  transition: all 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(
+      from 90deg,
+      transparent 0deg,
+      transparent 45deg,
+      rgba($primary-color, 0.3) 90deg,
+      rgba($primary-color, 0.6) 135deg,
+      rgba($primary-color, 0.9) 180deg,
+      rgba($primary-color, 0.6) 225deg,
+      rgba($primary-color, 0.3) 270deg,
+      transparent 315deg,
+      transparent 360deg
+    );
+    border-radius: 50%;
+    mask: radial-gradient(circle at 50% 50%, transparent 45%, black 50%, black 50%, transparent 55%);
+    animation: swirl-rotate 4s linear infinite;
+  }
+}
+
+/* Swirl rotation animation */
+@keyframes swirl-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Sparkle pulse animation */
+@keyframes sparkle-pulse {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Hover effects for logo and swirl */
+.logo-container:hover .logo {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover .purple-swirl {
+  transform: translate(-50%, -50%) scale(1.15);
+  opacity: 1.2;
+}
+
+.logo-container:hover .purple-swirl::before {
+  filter: brightness(1.3) saturate(1.2);
 }

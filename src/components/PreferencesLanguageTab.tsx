@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import CustomSelect from './CustomSelect';
 import { useLanguage } from '../hooks/useLanguage';
 
-interface LanguageTabProps {
+interface PreferencesLanguageTabProps {
   language: string;
   onLanguageChange: (language: string) => void;
 }
 
-const LanguageTab: React.FC<LanguageTabProps> = ({ language, onLanguageChange }) => {
+const PreferencesLanguageTab: React.FC<PreferencesLanguageTabProps> = ({ language, onLanguageChange }) => {
   const { t } = useTranslation();
   const { changeLanguage } = useLanguage();
 
@@ -35,4 +35,4 @@ const LanguageTab: React.FC<LanguageTabProps> = ({ language, onLanguageChange })
   );
 };
 
-export default LanguageTab;
+export default PreferencesLanguageTab;

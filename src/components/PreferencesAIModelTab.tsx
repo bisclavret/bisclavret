@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-dialog';
 import CustomSelect from './CustomSelect';
 
-interface AIModelTabProps {
+interface PreferencesAIModelTabProps {
   aiModelPath: string;
   onModelPathChange: (path: string) => void;
   onShowNotification?: (message: string, type?: 'success' | 'info' | 'warning' | 'error') => void;
 }
 
-const AIModelTab: React.FC<AIModelTabProps> = ({ aiModelPath, onModelPathChange, onShowNotification }) => {
+const PreferencesAIModelTab: React.FC<PreferencesAIModelTabProps> = ({ aiModelPath, onModelPathChange, onShowNotification }) => {
   const { t } = useTranslation();
   const [activeSubTab, setActiveSubTab] = useState<'setup' | 'prompt'>('setup');
   const [selectedModel, setSelectedModel] = useState<string>('');
@@ -99,7 +99,7 @@ const AIModelTab: React.FC<AIModelTabProps> = ({ aiModelPath, onModelPathChange,
                   value={apiKey}
                   onChange={(e) => setApiKey(e.target.value)}
                   placeholder={t('settings.enterApiKey')}
-                  className="api-key-input"
+                  className="input"
                 />
               </div>
             )}
@@ -135,4 +135,4 @@ const AIModelTab: React.FC<AIModelTabProps> = ({ aiModelPath, onModelPathChange,
   );
 };
 
-export default AIModelTab;
+export default PreferencesAIModelTab;

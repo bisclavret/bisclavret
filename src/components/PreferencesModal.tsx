@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Modal from './Modal';
-import ThemesTab from './ThemesTab';
-import LanguageTab from './LanguageTab';
-import AIModelTab from './AIModelTab';
-import './PreferencesModal.scss';
+import PreferencesThemesTab from './PreferencesThemesTab';
+import PreferencesLanguageTab from './PreferencesLanguageTab';
+import PreferencesAIModelTab from './PreferencesAIModelTab';
 
 interface PreferencesModalProps {
   isOpen: boolean;
@@ -72,49 +71,48 @@ const PreferencesModal: React.FC<PreferencesModalProps> = ({ isOpen, onClose, in
   };
 
 
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="preferences-modal">
-        <div className="modal-header">
-          <h2>{t('fileMenu.preferences')}</h2>
-          <button className="close-button" onClick={onClose}>&times;</button>
+      <div className="modal-header">
+        <h2>{t('fileMenu.preferences')}</h2>
+        <button className="close-button" onClick={onClose}>&times;</button>
+      </div>
+      <div className="modal-body">
+        <div className="tabs">
+          <button
+            className={activeTab === 'themes' ? 'active' : ''}
+            onClick={() => setActiveTab('themes')}
+          >
+            {t('settings.themes')}
+          </button>
+          <button
+            className={activeTab === 'language' ? 'active' : ''}
+            onClick={() => setActiveTab('language')}
+          >
+            {t('settings.language')}
+          </button>
+          <button
+            className={activeTab === 'aiModel' ? 'active' : ''}
+            onClick={() => setActiveTab('aiModel')}
+          >
+            {t('settings.aiModel')}
+          </button>
         </div>
-        <div className="modal-body">
-          <div className="tabs">
-            <button
-              className={activeTab === 'themes' ? 'active' : ''}
-              onClick={() => setActiveTab('themes')}
-            >
-              {t('settings.themes')}
-            </button>
-            <button
-              className={activeTab === 'language' ? 'active' : ''}
-              onClick={() => setActiveTab('language')}
-            >
-              {t('settings.language')}
-            </button>
-            <button
-              className={activeTab === 'aiModel' ? 'active' : ''}
-              onClick={() => setActiveTab('aiModel')}
-            >
-              {t('settings.aiModel')}
-            </button>
-          </div>
-          <div className="tab-content">
-            {activeTab === 'themes' && (
-              <ThemesTab theme={theme} onThemeChange={handleThemeChange} />
-            )}
-            {activeTab === 'language' && (
-              <LanguageTab language={language} onLanguageChange={handleLanguageChange} />
-            )}
-            {activeTab === 'aiModel' && (
-              <AIModelTab
-                aiModelPath={aiModelPath}
-                onModelPathChange={setAiModelPath}
-                onShowNotification={onShowNotification}
-              />
-            )}
-          </div>
+        <div className="tab-content">
+          {activeTab === 'themes' && (
+            <PreferencesThemesTab theme={theme} onThemeChange={handleThemeChange} />
+          )}
+          {activeTab === 'language' && (
+            <PreferencesLanguageTab language={language} onLanguageChange={handleLanguageChange} />
+          )}
+          {activeTab === 'aiModel' && (
+            <PreferencesAIModelTab
+              aiModelPath={aiModelPath}
+              onModelPathChange={setAiModelPath}
+              onShowNotification={onShowNotification}
+            />
+          )}
         </div>
       </div>
     </Modal>

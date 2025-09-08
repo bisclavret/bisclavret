@@ -2,8 +2,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDropdownMenu } from '../hooks/useDropdownMenu';
+import { useWindowControls } from '../hooks/useWindowControls';
+import { useNewStoryModal } from '../hooks/useNewStoryModal';
 import MenuItem from './MenuItem';
 import WindowControls from './WindowControls';
+import NewStoryModal from './NewStoryModal';
 import icon from '../assets/icon.png';
 
 interface TitlebarProps {
@@ -13,6 +16,8 @@ interface TitlebarProps {
 const Titlebar: React.FC<TitlebarProps> = ({ onOpenPreferences }) => {
   const { t } = useTranslation();
   const { activeDropdown, activeSubmenu, menuRef, openSubmenu, closeSubmenu, toggleDropdown, openDropdownOnHover } = useDropdownMenu();
+  const { closeWindow } = useWindowControls();
+  const { isOpen: isNewStoryModalOpen, openModal: openNewStoryModal, closeModal: closeNewStoryModal, createStory } = useNewStoryModal();
 
   return (
     <div className="titlebar">
@@ -24,7 +29,14 @@ const Titlebar: React.FC<TitlebarProps> = ({ onOpenPreferences }) => {
           <div className="menu">
             <span onClick={() => toggleDropdown('file')} onMouseEnter={() => openDropdownOnHover('file')}>{t('menu.file')}</span>
             {activeDropdown === 'file' && <div className="dropdown" onMouseEnter={() => openDropdownOnHover('file')}>
-              <MenuItem label={t('fileMenu.newStory')} />
+              <MenuItem
+                label={t('fileMenu.newStory')}
+                onClick={(e) => {
+                  e?.stopPropagation();
+                  openNewStoryModal();
+                  toggleDropdown('');
+                }}
+              />
               <MenuItem label={t('fileMenu.newChapter')} />
               <hr />
               <MenuItem label={t('fileMenu.openStory')} />
@@ -55,7 +67,13 @@ const Titlebar: React.FC<TitlebarProps> = ({ onOpenPreferences }) => {
                   />
                 </div>}
               </div>
-              <MenuItem label={t('fileMenu.exit')} />
+              <MenuItem
+                label={t('fileMenu.exit')}
+                onClick={() => {
+                  closeWindow();
+                  toggleDropdown('');
+                }}
+              />
             </div>}
           </div>
 
@@ -111,6 +129,13 @@ const Titlebar: React.FC<TitlebarProps> = ({ onOpenPreferences }) => {
 
       {/* Right: Window buttons */}
       <WindowControls />
+
+      {/* New Story Modal */}
+      <NewStoryModal
+        isOpen={isNewStoryModalOpen}
+        onClose={closeNewStoryModal}
+        onCreateStory={createStory}
+      />
     </div>
   );
 };

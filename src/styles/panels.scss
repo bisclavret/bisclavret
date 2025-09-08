@@ -10,6 +10,7 @@
   align-items: center;
   text-align: center;
   padding: $spacing-xl;
+  //background: radial-gradient(ellipse at 50% 50%, $primary-color 0%, rgba($primary-color, 0.3) 25%, transparent 50%);
   @include no-select;
 }
 
@@ -18,7 +19,9 @@
   color: $text-secondary;
   margin: 0 0 $spacing-md 0;
   @include hover-effect;
+  
 }
+
 
 .left-panel .logo {
   height: 15em;
@@ -37,6 +40,7 @@
   font-size: 3rem;
   margin: 0.5rem 0;
   letter-spacing: 1px;
+  
 }
 
 .left-panel .info-text {

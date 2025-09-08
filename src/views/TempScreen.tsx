@@ -1,8 +1,8 @@
-// SettingsScreen.tsx
+// TempScreen.tsx
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-const SettingsScreen: React.FC = () => {
+const TempScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
 
   const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -12,13 +12,13 @@ const SettingsScreen: React.FC = () => {
 
   return (
     <div id="app">
-      <h2>{t('settings.language')}</h2>
+      <h2>{t('Temp.language')}</h2>
       <select value={i18n.language} onChange={handleLanguageChange}>
-        <option value="en">{t('settings.english')}</option>
-        <option value="fr">{t('settings.french')}</option>
+        <option value="en">{t('Temp.english')}</option>
+        <option value="fr">{t('Temp.french')}</option>
       </select>
     </div>
   );
 };
 
-export default SettingsScreen;
+export default TempScreen;
