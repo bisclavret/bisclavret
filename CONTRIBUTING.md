@@ -34,6 +34,43 @@ Thank you for your interest in contributing to Bisclavret! This document provide
    npm run tauri:dev
    ```
 
+### Internationalization Configuration
+
+The application supports multiple languages. To add or modify translations:
+
+1. Edit the JSON files located in `src/locales/` (e.g., `en.json`, `fr.json`, `de.json`).
+2. Utilize the `useTranslation` hook in components: `const { t } = useTranslation();`.
+3. Access translations using `t('key')`.
+
+For additional details, refer to the i18next documentation.
+
+### Building
+
+```bash
+# Build for production
+npm run build
+
+# Build Tauri application
+npm run tauri build
+```
+
+## 🛠️ Technology Stack
+
+- **Frontend**: React 18, TypeScript, SCSS
+- **Desktop Framework**: Tauri 2.x
+- **Build Tool**: Vite
+- **Styling**: SCSS with custom variables and mixins
+
+## 📚 Useful Resources
+
+### Documentation
+- [Tauri Documentation](https://v2.tauri.app/learn/) - Official guide for building desktop applications with Tauri.
+- [React Documentation](https://react.dev/learn) - Official React learning resources.
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/) - Comprehensive TypeScript reference.
+- [Vite Documentation](https://vitejs.dev/guide/) - Guide for using the Vite build tool.
+- [SCSS/Sass Documentation](https://sass-lang.com/documentation/) - Official SCSS/Sass reference.
+- [i18next Documentation](https://www.i18next.com/) - Guide for internationalization with i18next.
+
 ## 🛠️ Development Guidelines
 
 ### Code Style
@@ -46,17 +83,36 @@ Thank you for your interest in contributing to Bisclavret! This document provide
 ### Project Structure
 
 ```
-src/
-├── assets/         # Static assets (icons, images)
-├── components/     # Reusable React components
-├── hooks/          # Custom React hooks
-├── locales/        # Internationalization files (JSON)
-├── styles/         # SCSS stylesheets with variables and mixins
-├── views/          # Page/screen components
-├── App.tsx         # Main app component
-├── i18n.ts         # i18next configuration
-├── main.tsx        # Application entry point
-└── vite-env.d.ts   # Vite type definitions
+bisclavret/
+├── .gitignore             # Git ignore rules
+├── CONTRIBUTING.md        # Contribution guidelines
+├── index.html             # HTML entry point
+├── LICENSE                # Project license
+├── package-lock.json      # NPM lock file
+├── package.json           # Node.js dependencies and scripts
+├── README.md              # Project documentation
+├── tsconfig.json          # TypeScript configuration
+├── tsconfig.node.json     # TypeScript config for Node.js
+├── vite.config.ts         # Vite build configuration
+├── public/                # Public static assets
+├── src/                   # React application
+│   ├── assets/            # Static assets (icons, images)
+│   ├── components/        # Reusable React components
+│   ├── hooks/             # Custom React hooks
+│   ├── locales/           # Internationalization files (JSON)
+│   ├── styles/            # SCSS stylesheets with variables and mixins
+│   ├── utils/             # Utility functions
+│   ├── views/             # Page/screen components
+│   ├── App.tsx            # Main app component
+│   ├── global.ts          # Global utilities
+│   ├── i18n.ts            # i18next configuration
+│   ├── main.tsx           # Application entry point
+│   └── vite-env.d.ts      # Vite type definitions
+└── src-tauri/             # Tauri backend
+    ├── src/               # Rust source code
+    ├── Cargo.toml         # Rust dependencies
+    ├── tauri.conf.json    # Tauri configuration
+    └── icons/             # App icons
 ```
 
 ### Branching Strategy
